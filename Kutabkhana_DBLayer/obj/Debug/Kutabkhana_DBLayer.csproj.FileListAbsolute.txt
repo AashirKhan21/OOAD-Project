@@ -1,0 +1,6 @@
+E:\5th Semester\OOAD\Project\Kutabkhana_DBLayer\bin\Debug\Kutabkhana_DBLayer.dll
+E:\5th Semester\OOAD\Project\Kutabkhana_DBLayer\bin\Debug\Kutabkhana_DBLayer.pdb
+E:\5th Semester\OOAD\Project\Kutabkhana_DBLayer\obj\Debug\Kutabkhana_DBLayer.csproj.AssemblyReference.cache
+E:\5th Semester\OOAD\Project\Kutabkhana_DBLayer\obj\Debug\Kutabkhana_DBLayer.csproj.CoreCompileInputs.cache
+E:\5th Semester\OOAD\Project\Kutabkhana_DBLayer\obj\Debug\Kutabkhana_DBLayer.dll
+E:\5th Semester\OOAD\Project\Kutabkhana_DBLayer\obj\Debug\Kutabkhana_DBLayer.pdb

@@ -1,0 +1,1307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="KutabkhanaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tbl_Book">
+          <Key>
+            <PropertyRef Name="BookID" />
+          </Key>
+          <Property Name="BookID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="DepartmentID" Type="int" Nullable="false" />
+          <Property Name="BookTypeID" Type="int" Nullable="false" />
+          <Property Name="BookTitle" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="ShortDescription" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Author" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="BookName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Edition" Type="float" Nullable="false" />
+          <Property Name="TotalCopies" Type="int" Nullable="false" />
+          <Property Name="RegDate" Type="date" Nullable="false" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_BookFine">
+          <Key>
+            <PropertyRef Name="BookFineID" />
+          </Key>
+          <Property Name="BookFineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="BookID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="FineDate" Type="date" Nullable="false" />
+          <Property Name="FineAmount" Type="float" Nullable="false" />
+          <Property Name="ReceiveAmount" Type="float" />
+          <Property Name="NoOfDays" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_BookReturn">
+          <Key>
+            <PropertyRef Name="BookReturnID" />
+          </Key>
+          <Property Name="BookReturnID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookID" Type="int" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="IssueDate" Type="date" Nullable="false" />
+          <Property Name="ReturnDate" Type="date" Nullable="false" />
+          <Property Name="CurrentDate" Type="date" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_BookType">
+          <Key>
+            <PropertyRef Name="BookTypeID" />
+          </Key>
+          <Property Name="BookTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Department">
+          <Key>
+            <PropertyRef Name="DepartmentID" />
+          </Key>
+          <Property Name="DepartmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Designation">
+          <Key>
+            <PropertyRef Name="DesignationID" />
+          </Key>
+          <Property Name="DesignationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Scale" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="FatherName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContactNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="DesignationID" Type="int" Nullable="false" />
+          <Property Name="DepartmentID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tbl_IssueBook">
+          <Key>
+            <PropertyRef Name="IssueBookID" />
+          </Key>
+          <Property Name="IssueBookID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="BookID" Type="int" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="IssueCopies" Type="int" Nullable="false" />
+          <Property Name="IssueDate" Type="date" Nullable="false" />
+          <Property Name="ReturnDate" Type="date" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="ReserveNoOfCopies" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Purchase">
+          <Key>
+            <PropertyRef Name="PurchaseID" />
+          </Key>
+          <Property Name="PurchaseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PurchaseDate" Type="date" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="PurchaseAmount" Type="float" Nullable="false" />
+          <Property Name="SupplierID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_PurchaseDetails">
+          <Key>
+            <PropertyRef Name="PurchaseDetailID" />
+          </Key>
+          <Property Name="PurchaseDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookID" Type="int" Nullable="false" />
+          <Property Name="PurchaseID" Type="int" Nullable="false" />
+          <Property Name="Qty" Type="int" Nullable="false" />
+          <Property Name="UnitPrice" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Supplier">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+          </Key>
+          <Property Name="SupplierID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SupplierName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="ContactNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" />
+          <Property Name="Description" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="tbl_Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserTypeID" Type="int" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_UserType">
+          <Key>
+            <PropertyRef Name="UserTypeID" />
+          </Key>
+          <Property Name="UserTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserType" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tbl_Book_tbl_BookType">
+          <End Role="tbl_BookType" Type="Self.tbl_BookType" Multiplicity="1" />
+          <End Role="tbl_Book" Type="Self.tbl_Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_BookType">
+              <PropertyRef Name="BookTypeID" />
+            </Principal>
+            <Dependent Role="tbl_Book">
+              <PropertyRef Name="BookTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Book_tbl_Department">
+          <End Role="tbl_Department" Type="Self.tbl_Department" Multiplicity="1" />
+          <End Role="tbl_Book" Type="Self.tbl_Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Department">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="tbl_Book">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Book_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="1" />
+          <End Role="tbl_Book" Type="Self.tbl_Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_Book">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_BookFine_tbl_Book">
+          <End Role="tbl_Book" Type="Self.tbl_Book" Multiplicity="1" />
+          <End Role="tbl_BookFine" Type="Self.tbl_BookFine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Book">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="tbl_BookFine">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_BookFine_tbl_Employee">
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="1" />
+          <End Role="tbl_BookFine" Type="Self.tbl_BookFine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="tbl_BookFine">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_BookReturn_tbl_Book1">
+          <End Role="tbl_Book" Type="Self.tbl_Book" Multiplicity="1" />
+          <End Role="tbl_BookReturn" Type="Self.tbl_BookReturn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Book">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="tbl_BookReturn">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_BookReturn_tbl_Employee">
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="1" />
+          <End Role="tbl_BookReturn" Type="Self.tbl_BookReturn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="tbl_BookReturn">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_BookReturn_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="1" />
+          <End Role="tbl_BookReturn" Type="Self.tbl_BookReturn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_BookReturn">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Department_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="1" />
+          <End Role="tbl_Department" Type="Self.tbl_Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_Department">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Designation_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="1" />
+          <End Role="tbl_Designation" Type="Self.tbl_Designation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_Designation">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Employee_tbl_Department">
+          <End Role="tbl_Department" Type="Self.tbl_Department" Multiplicity="1" />
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Department">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="tbl_Employee">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Employee_tbl_Designation">
+          <End Role="tbl_Designation" Type="Self.tbl_Designation" Multiplicity="1" />
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Designation">
+              <PropertyRef Name="DesignationID" />
+            </Principal>
+            <Dependent Role="tbl_Employee">
+              <PropertyRef Name="DesignationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_IssueBook_tbl_Book">
+          <End Role="tbl_Book" Type="Self.tbl_Book" Multiplicity="1" />
+          <End Role="tbl_IssueBook" Type="Self.tbl_IssueBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Book">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="tbl_IssueBook">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_IssueBook_tbl_Employee">
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="1" />
+          <End Role="tbl_IssueBook" Type="Self.tbl_IssueBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="tbl_IssueBook">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_IssueBook_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="1" />
+          <End Role="tbl_IssueBook" Type="Self.tbl_IssueBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_IssueBook">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Purchase_tbl_Supplier">
+          <End Role="tbl_Supplier" Type="Self.tbl_Supplier" Multiplicity="1" />
+          <End Role="tbl_Purchase" Type="Self.tbl_Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Supplier">
+              <PropertyRef Name="SupplierID" />
+            </Principal>
+            <Dependent Role="tbl_Purchase">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Purchase_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="1" />
+          <End Role="tbl_Purchase" Type="Self.tbl_Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_Purchase">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PurchaseDetails_tbl_Book">
+          <End Role="tbl_Book" Type="Self.tbl_Book" Multiplicity="1" />
+          <End Role="tbl_PurchaseDetails" Type="Self.tbl_PurchaseDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Book">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="tbl_PurchaseDetails">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PurchaseDetails_tbl_Purchase">
+          <End Role="tbl_Purchase" Type="Self.tbl_Purchase" Multiplicity="1" />
+          <End Role="tbl_PurchaseDetails" Type="Self.tbl_PurchaseDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Purchase">
+              <PropertyRef Name="PurchaseID" />
+            </Principal>
+            <Dependent Role="tbl_PurchaseDetails">
+              <PropertyRef Name="PurchaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Supplier_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="1" />
+          <End Role="tbl_Supplier" Type="Self.tbl_Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_Supplier">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Users_tbl_Employee">
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="1" />
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="tbl_Users">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Users_tbl_UserType">
+          <End Role="tbl_UserType" Type="Self.tbl_UserType" Multiplicity="1" />
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_UserType">
+              <PropertyRef Name="UserTypeID" />
+            </Principal>
+            <Dependent Role="tbl_Users">
+              <PropertyRef Name="UserTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KutabkhanaDBModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Book" EntityType="Self.tbl_Book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_BookFine" EntityType="Self.tbl_BookFine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_BookReturn" EntityType="Self.tbl_BookReturn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_BookType" EntityType="Self.tbl_BookType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Department" EntityType="Self.tbl_Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Designation" EntityType="Self.tbl_Designation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Employee" EntityType="Self.tbl_Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_IssueBook" EntityType="Self.tbl_IssueBook" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Purchase" EntityType="Self.tbl_Purchase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PurchaseDetails" EntityType="Self.tbl_PurchaseDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Supplier" EntityType="Self.tbl_Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Users" EntityType="Self.tbl_Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_UserType" EntityType="Self.tbl_UserType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tbl_Book_tbl_BookType" Association="Self.FK_tbl_Book_tbl_BookType">
+            <End Role="tbl_BookType" EntitySet="tbl_BookType" />
+            <End Role="tbl_Book" EntitySet="tbl_Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Book_tbl_Department" Association="Self.FK_tbl_Book_tbl_Department">
+            <End Role="tbl_Department" EntitySet="tbl_Department" />
+            <End Role="tbl_Book" EntitySet="tbl_Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Book_tbl_Users" Association="Self.FK_tbl_Book_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_Book" EntitySet="tbl_Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_BookFine_tbl_Book" Association="Self.FK_tbl_BookFine_tbl_Book">
+            <End Role="tbl_Book" EntitySet="tbl_Book" />
+            <End Role="tbl_BookFine" EntitySet="tbl_BookFine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_BookFine_tbl_Employee" Association="Self.FK_tbl_BookFine_tbl_Employee">
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+            <End Role="tbl_BookFine" EntitySet="tbl_BookFine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_BookReturn_tbl_Book1" Association="Self.FK_tbl_BookReturn_tbl_Book1">
+            <End Role="tbl_Book" EntitySet="tbl_Book" />
+            <End Role="tbl_BookReturn" EntitySet="tbl_BookReturn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_BookReturn_tbl_Employee" Association="Self.FK_tbl_BookReturn_tbl_Employee">
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+            <End Role="tbl_BookReturn" EntitySet="tbl_BookReturn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_BookReturn_tbl_Users" Association="Self.FK_tbl_BookReturn_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_BookReturn" EntitySet="tbl_BookReturn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Department_tbl_Users" Association="Self.FK_tbl_Department_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_Department" EntitySet="tbl_Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Designation_tbl_Users" Association="Self.FK_tbl_Designation_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_Designation" EntitySet="tbl_Designation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Employee_tbl_Department" Association="Self.FK_tbl_Employee_tbl_Department">
+            <End Role="tbl_Department" EntitySet="tbl_Department" />
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Employee_tbl_Designation" Association="Self.FK_tbl_Employee_tbl_Designation">
+            <End Role="tbl_Designation" EntitySet="tbl_Designation" />
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_IssueBook_tbl_Book" Association="Self.FK_tbl_IssueBook_tbl_Book">
+            <End Role="tbl_Book" EntitySet="tbl_Book" />
+            <End Role="tbl_IssueBook" EntitySet="tbl_IssueBook" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_IssueBook_tbl_Employee" Association="Self.FK_tbl_IssueBook_tbl_Employee">
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+            <End Role="tbl_IssueBook" EntitySet="tbl_IssueBook" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_IssueBook_tbl_Users" Association="Self.FK_tbl_IssueBook_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_IssueBook" EntitySet="tbl_IssueBook" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Purchase_tbl_Supplier" Association="Self.FK_tbl_Purchase_tbl_Supplier">
+            <End Role="tbl_Supplier" EntitySet="tbl_Supplier" />
+            <End Role="tbl_Purchase" EntitySet="tbl_Purchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Purchase_tbl_Users" Association="Self.FK_tbl_Purchase_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_Purchase" EntitySet="tbl_Purchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PurchaseDetails_tbl_Book" Association="Self.FK_tbl_PurchaseDetails_tbl_Book">
+            <End Role="tbl_Book" EntitySet="tbl_Book" />
+            <End Role="tbl_PurchaseDetails" EntitySet="tbl_PurchaseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PurchaseDetails_tbl_Purchase" Association="Self.FK_tbl_PurchaseDetails_tbl_Purchase">
+            <End Role="tbl_Purchase" EntitySet="tbl_Purchase" />
+            <End Role="tbl_PurchaseDetails" EntitySet="tbl_PurchaseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Supplier_tbl_Users" Association="Self.FK_tbl_Supplier_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_Supplier" EntitySet="tbl_Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Users_tbl_Employee" Association="Self.FK_tbl_Users_tbl_Employee">
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Users_tbl_UserType" Association="Self.FK_tbl_Users_tbl_UserType">
+            <End Role="tbl_UserType" EntitySet="tbl_UserType" />
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KutabkhanaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tbl_Book">
+          <Key>
+            <PropertyRef Name="BookID" />
+          </Key>
+          <Property Name="BookID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+          <Property Name="BookTypeID" Type="Int32" Nullable="false" />
+          <Property Name="BookTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShortDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Author" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BookName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Edition" Type="Double" Nullable="false" />
+          <Property Name="TotalCopies" Type="Int32" Nullable="false" />
+          <Property Name="RegDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbl_BookType" Relationship="Self.FK_tbl_Book_tbl_BookType" FromRole="tbl_Book" ToRole="tbl_BookType" />
+          <NavigationProperty Name="tbl_Department" Relationship="Self.FK_tbl_Book_tbl_Department" FromRole="tbl_Book" ToRole="tbl_Department" />
+          <NavigationProperty Name="tbl_Users" Relationship="Self.FK_tbl_Book_tbl_Users" FromRole="tbl_Book" ToRole="tbl_Users" />
+          <NavigationProperty Name="tbl_BookFine" Relationship="Self.FK_tbl_BookFine_tbl_Book" FromRole="tbl_Book" ToRole="tbl_BookFine" />
+          <NavigationProperty Name="tbl_BookReturn" Relationship="Self.FK_tbl_BookReturn_tbl_Book1" FromRole="tbl_Book" ToRole="tbl_BookReturn" />
+          <NavigationProperty Name="tbl_IssueBook" Relationship="Self.FK_tbl_IssueBook_tbl_Book" FromRole="tbl_Book" ToRole="tbl_IssueBook" />
+          <NavigationProperty Name="tbl_PurchaseDetails" Relationship="Self.FK_tbl_PurchaseDetails_tbl_Book" FromRole="tbl_Book" ToRole="tbl_PurchaseDetails" />
+        </EntityType>
+        <EntityType Name="tbl_BookFine">
+          <Key>
+            <PropertyRef Name="BookFineID" />
+          </Key>
+          <Property Name="BookFineID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="BookID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="FineDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FineAmount" Type="Double" Nullable="false" />
+          <Property Name="ReceiveAmount" Type="Double" />
+          <Property Name="NoOfDays" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbl_Book" Relationship="Self.FK_tbl_BookFine_tbl_Book" FromRole="tbl_BookFine" ToRole="tbl_Book" />
+          <NavigationProperty Name="tbl_Employee" Relationship="Self.FK_tbl_BookFine_tbl_Employee" FromRole="tbl_BookFine" ToRole="tbl_Employee" />
+        </EntityType>
+        <EntityType Name="tbl_BookReturn">
+          <Key>
+            <PropertyRef Name="BookReturnID" />
+          </Key>
+          <Property Name="BookReturnID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="IssueDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ReturnDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CurrentDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbl_Book" Relationship="Self.FK_tbl_BookReturn_tbl_Book1" FromRole="tbl_BookReturn" ToRole="tbl_Book" />
+          <NavigationProperty Name="tbl_Employee" Relationship="Self.FK_tbl_BookReturn_tbl_Employee" FromRole="tbl_BookReturn" ToRole="tbl_Employee" />
+          <NavigationProperty Name="tbl_Users" Relationship="Self.FK_tbl_BookReturn_tbl_Users" FromRole="tbl_BookReturn" ToRole="tbl_Users" />
+        </EntityType>
+        <EntityType Name="tbl_BookType">
+          <Key>
+            <PropertyRef Name="BookTypeID" />
+          </Key>
+          <Property Name="BookTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbl_Book" Relationship="Self.FK_tbl_Book_tbl_BookType" FromRole="tbl_BookType" ToRole="tbl_Book" />
+        </EntityType>
+        <EntityType Name="tbl_Department">
+          <Key>
+            <PropertyRef Name="DepartmentID" />
+          </Key>
+          <Property Name="DepartmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbl_Book" Relationship="Self.FK_tbl_Book_tbl_Department" FromRole="tbl_Department" ToRole="tbl_Book" />
+          <NavigationProperty Name="tbl_Users" Relationship="Self.FK_tbl_Department_tbl_Users" FromRole="tbl_Department" ToRole="tbl_Users" />
+          <NavigationProperty Name="tbl_Employee" Relationship="Self.FK_tbl_Employee_tbl_Department" FromRole="tbl_Department" ToRole="tbl_Employee" />
+        </EntityType>
+        <EntityType Name="tbl_Designation">
+          <Key>
+            <PropertyRef Name="DesignationID" />
+          </Key>
+          <Property Name="DesignationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Scale" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbl_Users" Relationship="Self.FK_tbl_Designation_tbl_Users" FromRole="tbl_Designation" ToRole="tbl_Users" />
+          <NavigationProperty Name="tbl_Employee" Relationship="Self.FK_tbl_Employee_tbl_Designation" FromRole="tbl_Designation" ToRole="tbl_Employee" />
+        </EntityType>
+        <EntityType Name="tbl_Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FatherName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DesignationID" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_BookFine" Relationship="Self.FK_tbl_BookFine_tbl_Employee" FromRole="tbl_Employee" ToRole="tbl_BookFine" />
+          <NavigationProperty Name="tbl_BookReturn" Relationship="Self.FK_tbl_BookReturn_tbl_Employee" FromRole="tbl_Employee" ToRole="tbl_BookReturn" />
+          <NavigationProperty Name="tbl_Department" Relationship="Self.FK_tbl_Employee_tbl_Department" FromRole="tbl_Employee" ToRole="tbl_Department" />
+          <NavigationProperty Name="tbl_Designation" Relationship="Self.FK_tbl_Employee_tbl_Designation" FromRole="tbl_Employee" ToRole="tbl_Designation" />
+          <NavigationProperty Name="tbl_IssueBook" Relationship="Self.FK_tbl_IssueBook_tbl_Employee" FromRole="tbl_Employee" ToRole="tbl_IssueBook" />
+          <NavigationProperty Name="tbl_Users" Relationship="Self.FK_tbl_Users_tbl_Employee" FromRole="tbl_Employee" ToRole="tbl_Users" />
+        </EntityType>
+        <EntityType Name="tbl_IssueBook">
+          <Key>
+            <PropertyRef Name="IssueBookID" />
+          </Key>
+          <Property Name="IssueBookID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="BookID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="IssueCopies" Type="Int32" Nullable="false" />
+          <Property Name="IssueDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ReturnDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ReserveNoOfCopies" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tbl_Book" Relationship="Self.FK_tbl_IssueBook_tbl_Book" FromRole="tbl_IssueBook" ToRole="tbl_Book" />
+          <NavigationProperty Name="tbl_Employee" Relationship="Self.FK_tbl_IssueBook_tbl_Employee" FromRole="tbl_IssueBook" ToRole="tbl_Employee" />
+          <NavigationProperty Name="tbl_Users" Relationship="Self.FK_tbl_IssueBook_tbl_Users" FromRole="tbl_IssueBook" ToRole="tbl_Users" />
+        </EntityType>
+        <EntityType Name="tbl_Purchase">
+          <Key>
+            <PropertyRef Name="PurchaseID" />
+          </Key>
+          <Property Name="PurchaseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PurchaseDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="PurchaseAmount" Type="Double" Nullable="false" />
+          <Property Name="SupplierID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbl_Supplier" Relationship="Self.FK_tbl_Purchase_tbl_Supplier" FromRole="tbl_Purchase" ToRole="tbl_Supplier" />
+          <NavigationProperty Name="tbl_Users" Relationship="Self.FK_tbl_Purchase_tbl_Users" FromRole="tbl_Purchase" ToRole="tbl_Users" />
+          <NavigationProperty Name="tbl_PurchaseDetails" Relationship="Self.FK_tbl_PurchaseDetails_tbl_Purchase" FromRole="tbl_Purchase" ToRole="tbl_PurchaseDetails" />
+        </EntityType>
+        <EntityType Name="tbl_PurchaseDetails">
+          <Key>
+            <PropertyRef Name="PurchaseDetailID" />
+          </Key>
+          <Property Name="PurchaseDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookID" Type="Int32" Nullable="false" />
+          <Property Name="PurchaseID" Type="Int32" Nullable="false" />
+          <Property Name="Qty" Type="Int32" Nullable="false" />
+          <Property Name="UnitPrice" Type="Double" Nullable="false" />
+          <NavigationProperty Name="tbl_Book" Relationship="Self.FK_tbl_PurchaseDetails_tbl_Book" FromRole="tbl_PurchaseDetails" ToRole="tbl_Book" />
+          <NavigationProperty Name="tbl_Purchase" Relationship="Self.FK_tbl_PurchaseDetails_tbl_Purchase" FromRole="tbl_PurchaseDetails" ToRole="tbl_Purchase" />
+        </EntityType>
+        <EntityType Name="tbl_Supplier">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+          </Key>
+          <Property Name="SupplierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Purchase" Relationship="Self.FK_tbl_Purchase_tbl_Supplier" FromRole="tbl_Supplier" ToRole="tbl_Purchase" />
+          <NavigationProperty Name="tbl_Users" Relationship="Self.FK_tbl_Supplier_tbl_Users" FromRole="tbl_Supplier" ToRole="tbl_Users" />
+        </EntityType>
+        <EntityType Name="tbl_Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tbl_Book" Relationship="Self.FK_tbl_Book_tbl_Users" FromRole="tbl_Users" ToRole="tbl_Book" />
+          <NavigationProperty Name="tbl_BookReturn" Relationship="Self.FK_tbl_BookReturn_tbl_Users" FromRole="tbl_Users" ToRole="tbl_BookReturn" />
+          <NavigationProperty Name="tbl_Department" Relationship="Self.FK_tbl_Department_tbl_Users" FromRole="tbl_Users" ToRole="tbl_Department" />
+          <NavigationProperty Name="tbl_Designation" Relationship="Self.FK_tbl_Designation_tbl_Users" FromRole="tbl_Users" ToRole="tbl_Designation" />
+          <NavigationProperty Name="tbl_Employee" Relationship="Self.FK_tbl_Users_tbl_Employee" FromRole="tbl_Users" ToRole="tbl_Employee" />
+          <NavigationProperty Name="tbl_IssueBook" Relationship="Self.FK_tbl_IssueBook_tbl_Users" FromRole="tbl_Users" ToRole="tbl_IssueBook" />
+          <NavigationProperty Name="tbl_Purchase" Relationship="Self.FK_tbl_Purchase_tbl_Users" FromRole="tbl_Users" ToRole="tbl_Purchase" />
+          <NavigationProperty Name="tbl_Supplier" Relationship="Self.FK_tbl_Supplier_tbl_Users" FromRole="tbl_Users" ToRole="tbl_Supplier" />
+          <NavigationProperty Name="tbl_UserType" Relationship="Self.FK_tbl_Users_tbl_UserType" FromRole="tbl_Users" ToRole="tbl_UserType" />
+        </EntityType>
+        <EntityType Name="tbl_UserType">
+          <Key>
+            <PropertyRef Name="UserTypeID" />
+          </Key>
+          <Property Name="UserTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserType" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbl_Users" Relationship="Self.FK_tbl_Users_tbl_UserType" FromRole="tbl_UserType" ToRole="tbl_Users" />
+        </EntityType>
+        <Association Name="FK_tbl_Book_tbl_BookType">
+          <End Role="tbl_BookType" Type="Self.tbl_BookType" Multiplicity="1" />
+          <End Role="tbl_Book" Type="Self.tbl_Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_BookType">
+              <PropertyRef Name="BookTypeID" />
+            </Principal>
+            <Dependent Role="tbl_Book">
+              <PropertyRef Name="BookTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Book_tbl_Department">
+          <End Role="tbl_Department" Type="Self.tbl_Department" Multiplicity="1" />
+          <End Role="tbl_Book" Type="Self.tbl_Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Department">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="tbl_Book">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Book_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="1" />
+          <End Role="tbl_Book" Type="Self.tbl_Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_Book">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_BookFine_tbl_Book">
+          <End Role="tbl_Book" Type="Self.tbl_Book" Multiplicity="1" />
+          <End Role="tbl_BookFine" Type="Self.tbl_BookFine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Book">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="tbl_BookFine">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_BookReturn_tbl_Book1">
+          <End Role="tbl_Book" Type="Self.tbl_Book" Multiplicity="1" />
+          <End Role="tbl_BookReturn" Type="Self.tbl_BookReturn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Book">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="tbl_BookReturn">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_IssueBook_tbl_Book">
+          <End Role="tbl_Book" Type="Self.tbl_Book" Multiplicity="1" />
+          <End Role="tbl_IssueBook" Type="Self.tbl_IssueBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Book">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="tbl_IssueBook">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PurchaseDetails_tbl_Book">
+          <End Role="tbl_Book" Type="Self.tbl_Book" Multiplicity="1" />
+          <End Role="tbl_PurchaseDetails" Type="Self.tbl_PurchaseDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Book">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="tbl_PurchaseDetails">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_BookFine_tbl_Employee">
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="1" />
+          <End Role="tbl_BookFine" Type="Self.tbl_BookFine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="tbl_BookFine">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_BookReturn_tbl_Employee">
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="1" />
+          <End Role="tbl_BookReturn" Type="Self.tbl_BookReturn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="tbl_BookReturn">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_BookReturn_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="1" />
+          <End Role="tbl_BookReturn" Type="Self.tbl_BookReturn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_BookReturn">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Department_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="1" />
+          <End Role="tbl_Department" Type="Self.tbl_Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_Department">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Employee_tbl_Department">
+          <End Role="tbl_Department" Type="Self.tbl_Department" Multiplicity="1" />
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Department">
+              <PropertyRef Name="DepartmentID" />
+            </Principal>
+            <Dependent Role="tbl_Employee">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Designation_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="1" />
+          <End Role="tbl_Designation" Type="Self.tbl_Designation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_Designation">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Employee_tbl_Designation">
+          <End Role="tbl_Designation" Type="Self.tbl_Designation" Multiplicity="1" />
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Designation">
+              <PropertyRef Name="DesignationID" />
+            </Principal>
+            <Dependent Role="tbl_Employee">
+              <PropertyRef Name="DesignationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_IssueBook_tbl_Employee">
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="1" />
+          <End Role="tbl_IssueBook" Type="Self.tbl_IssueBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="tbl_IssueBook">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Users_tbl_Employee">
+          <End Role="tbl_Employee" Type="Self.tbl_Employee" Multiplicity="1" />
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="tbl_Users">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_IssueBook_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="1" />
+          <End Role="tbl_IssueBook" Type="Self.tbl_IssueBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_IssueBook">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Purchase_tbl_Supplier">
+          <End Role="tbl_Supplier" Type="Self.tbl_Supplier" Multiplicity="1" />
+          <End Role="tbl_Purchase" Type="Self.tbl_Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Supplier">
+              <PropertyRef Name="SupplierID" />
+            </Principal>
+            <Dependent Role="tbl_Purchase">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Purchase_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="1" />
+          <End Role="tbl_Purchase" Type="Self.tbl_Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_Purchase">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_PurchaseDetails_tbl_Purchase">
+          <End Role="tbl_Purchase" Type="Self.tbl_Purchase" Multiplicity="1" />
+          <End Role="tbl_PurchaseDetails" Type="Self.tbl_PurchaseDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Purchase">
+              <PropertyRef Name="PurchaseID" />
+            </Principal>
+            <Dependent Role="tbl_PurchaseDetails">
+              <PropertyRef Name="PurchaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Supplier_tbl_Users">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="1" />
+          <End Role="tbl_Supplier" Type="Self.tbl_Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_Supplier">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Users_tbl_UserType">
+          <End Role="tbl_UserType" Type="Self.tbl_UserType" Multiplicity="1" />
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_UserType">
+              <PropertyRef Name="UserTypeID" />
+            </Principal>
+            <Dependent Role="tbl_Users">
+              <PropertyRef Name="UserTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KutabkhanaDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="tbl_Book" EntityType="Self.tbl_Book" />
+          <EntitySet Name="tbl_BookFine" EntityType="Self.tbl_BookFine" />
+          <EntitySet Name="tbl_BookReturn" EntityType="Self.tbl_BookReturn" />
+          <EntitySet Name="tbl_BookType" EntityType="Self.tbl_BookType" />
+          <EntitySet Name="tbl_Department" EntityType="Self.tbl_Department" />
+          <EntitySet Name="tbl_Designation" EntityType="Self.tbl_Designation" />
+          <EntitySet Name="tbl_Employee" EntityType="Self.tbl_Employee" />
+          <EntitySet Name="tbl_IssueBook" EntityType="Self.tbl_IssueBook" />
+          <EntitySet Name="tbl_Purchase" EntityType="Self.tbl_Purchase" />
+          <EntitySet Name="tbl_PurchaseDetails" EntityType="Self.tbl_PurchaseDetails" />
+          <EntitySet Name="tbl_Supplier" EntityType="Self.tbl_Supplier" />
+          <EntitySet Name="tbl_Users" EntityType="Self.tbl_Users" />
+          <EntitySet Name="tbl_UserType" EntityType="Self.tbl_UserType" />
+          <AssociationSet Name="FK_tbl_Book_tbl_BookType" Association="Self.FK_tbl_Book_tbl_BookType">
+            <End Role="tbl_BookType" EntitySet="tbl_BookType" />
+            <End Role="tbl_Book" EntitySet="tbl_Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Book_tbl_Department" Association="Self.FK_tbl_Book_tbl_Department">
+            <End Role="tbl_Department" EntitySet="tbl_Department" />
+            <End Role="tbl_Book" EntitySet="tbl_Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Book_tbl_Users" Association="Self.FK_tbl_Book_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_Book" EntitySet="tbl_Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_BookFine_tbl_Book" Association="Self.FK_tbl_BookFine_tbl_Book">
+            <End Role="tbl_Book" EntitySet="tbl_Book" />
+            <End Role="tbl_BookFine" EntitySet="tbl_BookFine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_BookReturn_tbl_Book1" Association="Self.FK_tbl_BookReturn_tbl_Book1">
+            <End Role="tbl_Book" EntitySet="tbl_Book" />
+            <End Role="tbl_BookReturn" EntitySet="tbl_BookReturn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_IssueBook_tbl_Book" Association="Self.FK_tbl_IssueBook_tbl_Book">
+            <End Role="tbl_Book" EntitySet="tbl_Book" />
+            <End Role="tbl_IssueBook" EntitySet="tbl_IssueBook" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PurchaseDetails_tbl_Book" Association="Self.FK_tbl_PurchaseDetails_tbl_Book">
+            <End Role="tbl_Book" EntitySet="tbl_Book" />
+            <End Role="tbl_PurchaseDetails" EntitySet="tbl_PurchaseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_BookFine_tbl_Employee" Association="Self.FK_tbl_BookFine_tbl_Employee">
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+            <End Role="tbl_BookFine" EntitySet="tbl_BookFine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_BookReturn_tbl_Employee" Association="Self.FK_tbl_BookReturn_tbl_Employee">
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+            <End Role="tbl_BookReturn" EntitySet="tbl_BookReturn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_BookReturn_tbl_Users" Association="Self.FK_tbl_BookReturn_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_BookReturn" EntitySet="tbl_BookReturn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Department_tbl_Users" Association="Self.FK_tbl_Department_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_Department" EntitySet="tbl_Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Employee_tbl_Department" Association="Self.FK_tbl_Employee_tbl_Department">
+            <End Role="tbl_Department" EntitySet="tbl_Department" />
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Designation_tbl_Users" Association="Self.FK_tbl_Designation_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_Designation" EntitySet="tbl_Designation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Employee_tbl_Designation" Association="Self.FK_tbl_Employee_tbl_Designation">
+            <End Role="tbl_Designation" EntitySet="tbl_Designation" />
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_IssueBook_tbl_Employee" Association="Self.FK_tbl_IssueBook_tbl_Employee">
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+            <End Role="tbl_IssueBook" EntitySet="tbl_IssueBook" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Users_tbl_Employee" Association="Self.FK_tbl_Users_tbl_Employee">
+            <End Role="tbl_Employee" EntitySet="tbl_Employee" />
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_IssueBook_tbl_Users" Association="Self.FK_tbl_IssueBook_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_IssueBook" EntitySet="tbl_IssueBook" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Purchase_tbl_Supplier" Association="Self.FK_tbl_Purchase_tbl_Supplier">
+            <End Role="tbl_Supplier" EntitySet="tbl_Supplier" />
+            <End Role="tbl_Purchase" EntitySet="tbl_Purchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Purchase_tbl_Users" Association="Self.FK_tbl_Purchase_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_Purchase" EntitySet="tbl_Purchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_PurchaseDetails_tbl_Purchase" Association="Self.FK_tbl_PurchaseDetails_tbl_Purchase">
+            <End Role="tbl_Purchase" EntitySet="tbl_Purchase" />
+            <End Role="tbl_PurchaseDetails" EntitySet="tbl_PurchaseDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Supplier_tbl_Users" Association="Self.FK_tbl_Supplier_tbl_Users">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_Supplier" EntitySet="tbl_Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Users_tbl_UserType" Association="Self.FK_tbl_Users_tbl_UserType">
+            <End Role="tbl_UserType" EntitySet="tbl_UserType" />
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KutabkhanaDBModelStoreContainer" CdmEntityContainer="KutabkhanaDBEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="KutabkhanaDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Book">
+            <EntityTypeMapping TypeName="KutabkhanaDBModel.tbl_Book">
+              <MappingFragment StoreEntitySet="tbl_Book">
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="BookTypeID" ColumnName="BookTypeID" />
+                <ScalarProperty Name="BookTitle" ColumnName="BookTitle" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+                <ScalarProperty Name="Edition" ColumnName="Edition" />
+                <ScalarProperty Name="TotalCopies" ColumnName="TotalCopies" />
+                <ScalarProperty Name="RegDate" ColumnName="RegDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_BookFine">
+            <EntityTypeMapping TypeName="KutabkhanaDBModel.tbl_BookFine">
+              <MappingFragment StoreEntitySet="tbl_BookFine">
+                <ScalarProperty Name="BookFineID" ColumnName="BookFineID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FineDate" ColumnName="FineDate" />
+                <ScalarProperty Name="FineAmount" ColumnName="FineAmount" />
+                <ScalarProperty Name="ReceiveAmount" ColumnName="ReceiveAmount" />
+                <ScalarProperty Name="NoOfDays" ColumnName="NoOfDays" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_BookReturn">
+            <EntityTypeMapping TypeName="KutabkhanaDBModel.tbl_BookReturn">
+              <MappingFragment StoreEntitySet="tbl_BookReturn">
+                <ScalarProperty Name="BookReturnID" ColumnName="BookReturnID" />
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+                <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+                <ScalarProperty Name="CurrentDate" ColumnName="CurrentDate" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_BookType">
+            <EntityTypeMapping TypeName="KutabkhanaDBModel.tbl_BookType">
+              <MappingFragment StoreEntitySet="tbl_BookType">
+                <ScalarProperty Name="BookTypeID" ColumnName="BookTypeID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Department">
+            <EntityTypeMapping TypeName="KutabkhanaDBModel.tbl_Department">
+              <MappingFragment StoreEntitySet="tbl_Department">
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Designation">
+            <EntityTypeMapping TypeName="KutabkhanaDBModel.tbl_Designation">
+              <MappingFragment StoreEntitySet="tbl_Designation">
+                <ScalarProperty Name="DesignationID" ColumnName="DesignationID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Scale" ColumnName="Scale" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Employee">
+            <EntityTypeMapping TypeName="KutabkhanaDBModel.tbl_Employee">
+              <MappingFragment StoreEntitySet="tbl_Employee">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="DesignationID" ColumnName="DesignationID" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_IssueBook">
+            <EntityTypeMapping TypeName="KutabkhanaDBModel.tbl_IssueBook">
+              <MappingFragment StoreEntitySet="tbl_IssueBook">
+                <ScalarProperty Name="IssueBookID" ColumnName="IssueBookID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="IssueCopies" ColumnName="IssueCopies" />
+                <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+                <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ReserveNoOfCopies" ColumnName="ReserveNoOfCopies" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Purchase">
+            <EntityTypeMapping TypeName="KutabkhanaDBModel.tbl_Purchase">
+              <MappingFragment StoreEntitySet="tbl_Purchase">
+                <ScalarProperty Name="PurchaseID" ColumnName="PurchaseID" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="PurchaseAmount" ColumnName="PurchaseAmount" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PurchaseDetails">
+            <EntityTypeMapping TypeName="KutabkhanaDBModel.tbl_PurchaseDetails">
+              <MappingFragment StoreEntitySet="tbl_PurchaseDetails">
+                <ScalarProperty Name="PurchaseDetailID" ColumnName="PurchaseDetailID" />
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="PurchaseID" ColumnName="PurchaseID" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Supplier">
+            <EntityTypeMapping TypeName="KutabkhanaDBModel.tbl_Supplier">
+              <MappingFragment StoreEntitySet="tbl_Supplier">
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Users">
+            <EntityTypeMapping TypeName="KutabkhanaDBModel.tbl_Users">
+              <MappingFragment StoreEntitySet="tbl_Users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_UserType">
+            <EntityTypeMapping TypeName="KutabkhanaDBModel.tbl_UserType">
+              <MappingFragment StoreEntitySet="tbl_UserType">
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
