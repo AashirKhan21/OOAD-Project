@@ -4,3 +4,9 @@ E:\5th Semester\OOAD\Project\Kutabkhana_DBLayer\obj\Debug\Kutabkhana_DBLayer.csp
 E:\5th Semester\OOAD\Project\Kutabkhana_DBLayer\obj\Debug\Kutabkhana_DBLayer.csproj.CoreCompileInputs.cache
 E:\5th Semester\OOAD\Project\Kutabkhana_DBLayer\obj\Debug\Kutabkhana_DBLayer.dll
 E:\5th Semester\OOAD\Project\Kutabkhana_DBLayer\obj\Debug\Kutabkhana_DBLayer.pdb
+E:\5th Semester\OOAD\Project\Kutabkhana_DBLayer\bin\Debug\Kutabkhana_DBLayer.dll.config
+E:\5th Semester\OOAD\Project\Kutabkhana_DBLayer\bin\Debug\EntityFramework.dll
+E:\5th Semester\OOAD\Project\Kutabkhana_DBLayer\bin\Debug\EntityFramework.SqlServer.dll
+E:\5th Semester\OOAD\Project\Kutabkhana_DBLayer\bin\Debug\EntityFramework.xml
+E:\5th Semester\OOAD\Project\Kutabkhana_DBLayer\bin\Debug\EntityFramework.SqlServer.xml
+E:\5th Semester\OOAD\Project\Kutabkhana_DBLayer\obj\Debug\Kutabkhana_DBLayer.csproj.CopyComplete

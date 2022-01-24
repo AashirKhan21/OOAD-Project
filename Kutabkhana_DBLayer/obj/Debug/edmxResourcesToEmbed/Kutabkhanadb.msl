@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KutabkhanaDBModelStoreContainer" CdmEntityContainer="KutabkhanaDBEntities">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="KutabkhanaDBModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Book">
+      <EntityTypeMapping TypeName="KutabkhanaDBModel.tbl_Book">
+        <MappingFragment StoreEntitySet="tbl_Book">
+          <ScalarProperty Name="BookID" ColumnName="BookID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="BookTypeID" ColumnName="BookTypeID" />
+          <ScalarProperty Name="BookTitle" ColumnName="BookTitle" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+          <ScalarProperty Name="BookName" ColumnName="BookName" />
+          <ScalarProperty Name="Edition" ColumnName="Edition" />
+          <ScalarProperty Name="TotalCopies" ColumnName="TotalCopies" />
+          <ScalarProperty Name="RegDate" ColumnName="RegDate" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_BookFine">
+      <EntityTypeMapping TypeName="KutabkhanaDBModel.tbl_BookFine">
+        <MappingFragment StoreEntitySet="tbl_BookFine">
+          <ScalarProperty Name="BookFineID" ColumnName="BookFineID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="BookID" ColumnName="BookID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="FineDate" ColumnName="FineDate" />
+          <ScalarProperty Name="FineAmount" ColumnName="FineAmount" />
+          <ScalarProperty Name="ReceiveAmount" ColumnName="ReceiveAmount" />
+          <ScalarProperty Name="NoOfDays" ColumnName="NoOfDays" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_BookReturn">
+      <EntityTypeMapping TypeName="KutabkhanaDBModel.tbl_BookReturn">
+        <MappingFragment StoreEntitySet="tbl_BookReturn">
+          <ScalarProperty Name="BookReturnID" ColumnName="BookReturnID" />
+          <ScalarProperty Name="BookID" ColumnName="BookID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+          <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+          <ScalarProperty Name="CurrentDate" ColumnName="CurrentDate" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_BookType">
+      <EntityTypeMapping TypeName="KutabkhanaDBModel.tbl_BookType">
+        <MappingFragment StoreEntitySet="tbl_BookType">
+          <ScalarProperty Name="BookTypeID" ColumnName="BookTypeID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Department">
+      <EntityTypeMapping TypeName="KutabkhanaDBModel.tbl_Department">
+        <MappingFragment StoreEntitySet="tbl_Department">
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Designation">
+      <EntityTypeMapping TypeName="KutabkhanaDBModel.tbl_Designation">
+        <MappingFragment StoreEntitySet="tbl_Designation">
+          <ScalarProperty Name="DesignationID" ColumnName="DesignationID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Scale" ColumnName="Scale" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Employee">
+      <EntityTypeMapping TypeName="KutabkhanaDBModel.tbl_Employee">
+        <MappingFragment StoreEntitySet="tbl_Employee">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="DesignationID" ColumnName="DesignationID" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_IssueBook">
+      <EntityTypeMapping TypeName="KutabkhanaDBModel.tbl_IssueBook">
+        <MappingFragment StoreEntitySet="tbl_IssueBook">
+          <ScalarProperty Name="IssueBookID" ColumnName="IssueBookID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="BookID" ColumnName="BookID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="IssueCopies" ColumnName="IssueCopies" />
+          <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+          <ScalarProperty Name="ReturnDate" ColumnName="ReturnDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ReserveNoOfCopies" ColumnName="ReserveNoOfCopies" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Purchase">
+      <EntityTypeMapping TypeName="KutabkhanaDBModel.tbl_Purchase">
+        <MappingFragment StoreEntitySet="tbl_Purchase">
+          <ScalarProperty Name="PurchaseID" ColumnName="PurchaseID" />
+          <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="PurchaseAmount" ColumnName="PurchaseAmount" />
+          <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_PurchaseDetails">
+      <EntityTypeMapping TypeName="KutabkhanaDBModel.tbl_PurchaseDetails">
+        <MappingFragment StoreEntitySet="tbl_PurchaseDetails">
+          <ScalarProperty Name="PurchaseDetailID" ColumnName="PurchaseDetailID" />
+          <ScalarProperty Name="BookID" ColumnName="BookID" />
+          <ScalarProperty Name="PurchaseID" ColumnName="PurchaseID" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Supplier">
+      <EntityTypeMapping TypeName="KutabkhanaDBModel.tbl_Supplier">
+        <MappingFragment StoreEntitySet="tbl_Supplier">
+          <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+          <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Users">
+      <EntityTypeMapping TypeName="KutabkhanaDBModel.tbl_Users">
+        <MappingFragment StoreEntitySet="tbl_Users">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_UserType">
+      <EntityTypeMapping TypeName="KutabkhanaDBModel.tbl_UserType">
+        <MappingFragment StoreEntitySet="tbl_UserType">
+          <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
