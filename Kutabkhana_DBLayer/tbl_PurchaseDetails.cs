@@ -11,7 +11,8 @@ namespace Kutabkhana_DBLayer
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tbl_PurchaseDetails
     {
         public int PurchaseDetailID { get; set; }

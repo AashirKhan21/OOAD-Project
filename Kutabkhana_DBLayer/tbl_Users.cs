@@ -11,7 +11,8 @@ namespace Kutabkhana_DBLayer
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tbl_Users
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,10 +28,15 @@ namespace Kutabkhana_DBLayer
         }
     
         public int UserID { get; set; }
+        [Required(ErrorMessage = "Please Select User Type")]
         public int UserTypeID { get; set; }
+        [Required(ErrorMessage = "Please Enter Username")]
         public string Username { get; set; }
+        [Required(ErrorMessage = "Please Enter Password")]
         public string Password { get; set; }
+        [Required(ErrorMessage = "Please Select Employee")]
         public int EmployeeID { get; set; }
+        [Display(Name = "Status")]
         public bool IsActive { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
