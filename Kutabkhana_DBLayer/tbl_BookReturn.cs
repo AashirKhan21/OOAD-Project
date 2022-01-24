@@ -11,13 +11,20 @@ namespace Kutabkhana_DBLayer
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tbl_BookReturn
     {
         public int BookReturnID { get; set; }
+        [Required(ErrorMessage = "Please Select Book")]
         public int BookID { get; set; }
+        [Required(ErrorMessage = "Please Select Employee")]
         public int EmployeeID { get; set; }
+        [Required(ErrorMessage = "Please Select Issue Date")]
+        [DataType(DataType.Date)]
         public System.DateTime IssueDate { get; set; }
+        [Required(ErrorMessage = "Please Select Return Date")]
+        [DataType(DataType.Date)]
         public System.DateTime ReturnDate { get; set; }
         public System.DateTime CurrentDate { get; set; }
         public int UserID { get; set; }

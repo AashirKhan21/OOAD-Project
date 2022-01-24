@@ -11,7 +11,8 @@ namespace Kutabkhana_DBLayer
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tbl_BookType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,7 +21,8 @@ namespace Kutabkhana_DBLayer
             this.tbl_Book = new HashSet<tbl_Book>();
         }
     
-        public int BookTypeID { get; set; }
+        public int BookTypeID { get; set; } 
+        [Required(ErrorMessage = "Please Enter Book Type")]
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

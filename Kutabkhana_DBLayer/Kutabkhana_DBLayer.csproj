@@ -56,12 +56,59 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Kutabkhanadb.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Kutabkhanadb.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Kutabkhanadb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Kutabkhanadb.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Kutabkhanadb.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>Kutabkhanadb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Book.cs">
+      <DependentUpon>Kutabkhanadb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_BookFine.cs">
+      <DependentUpon>Kutabkhanadb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_BookReturn.cs">
+      <DependentUpon>Kutabkhanadb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_BookType.cs">
+      <DependentUpon>Kutabkhanadb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Department.cs">
+      <DependentUpon>Kutabkhanadb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Designation.cs">
+      <DependentUpon>Kutabkhanadb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Employee.cs">
+      <DependentUpon>Kutabkhanadb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_IssueBook.cs">
+      <DependentUpon>Kutabkhanadb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Purchase.cs">
+      <DependentUpon>Kutabkhanadb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_PurchaseDetails.cs">
+      <DependentUpon>Kutabkhanadb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Supplier.cs">
+      <DependentUpon>Kutabkhanadb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_Users.cs">
+      <DependentUpon>Kutabkhanadb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_UserType.cs">
+      <DependentUpon>Kutabkhanadb.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Kutabkhanadb.edmx">
@@ -80,6 +127,12 @@
     <Content Include="Kutabkhanadb.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Kutabkhanadb.Context.cs</LastGenOutput>
+      <DependentUpon>Kutabkhanadb.edmx</DependentUpon>
+    </Content>
+    <Content Include="Kutabkhanadb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Kutabkhanadb.edmx</DependentUpon>
+      <LastGenOutput>Kutabkhanadb.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

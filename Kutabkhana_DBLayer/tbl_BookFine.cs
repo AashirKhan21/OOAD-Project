@@ -20,13 +20,19 @@ namespace Kutabkhana_DBLayer
         public int EmployeeID { get; set; }
         [Required(ErrorMessage = "Please Select Book!")]
         public int BookID { get; set; }
-        [Required(ErrorMessage = "Please Select User!")]
         public int UserID { get; set; }
 
+        [Required(ErrorMessage = "Please Select Date!")]
         [DataType(DataType.Date)]
         public System.DateTime FineDate { get; set; }
+
+        [Required(ErrorMessage = "Please Enter Penalty")]
         public double FineAmount { get; set; }
+
+        [Required(ErrorMessage = "Please Enter Receive Amount/Penalty")]
         public Nullable<double> ReceiveAmount { get; set; }
+
+        [Required(ErrorMessage = "Please Enter No of Days")]
         public int NoOfDays { get; set; }
     
         public virtual tbl_Book tbl_Book { get; set; }
