@@ -4,30 +4,42 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+@Html.ActionLink("New User Type", "Create", null, new { @class = "btn btn-primary" })
+<!-- DataTales Example -->
+<div class="card shadow mb-4 mt-2">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">User Type List</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UserType)
+                        </th>
+                        <th>
+                            Actions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.UserType)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserType)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.UserTypeID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.UserTypeID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.UserTypeID })
-        </td>
-    </tr>
-}
-
-</table>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserType)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.UserTypeID }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.UserTypeID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.UserTypeID })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

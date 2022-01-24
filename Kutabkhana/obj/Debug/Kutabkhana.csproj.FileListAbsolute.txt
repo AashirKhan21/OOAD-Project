@@ -82,3 +82,5 @@ E:\5th Semester\OOAD\Project\Kutabkhana\bin\EntityFramework.dll
 E:\5th Semester\OOAD\Project\Kutabkhana\bin\Kutabkhana_DBLayer.pdb
 E:\5th Semester\OOAD\Project\Kutabkhana\bin\Kutabkhana_DBLayer.dll.config
 E:\5th Semester\OOAD\Project\Kutabkhana\bin\EntityFramework.xml
+E:\5th Semester\OOAD\Project\Kutabkhana\bin\EntityFramework.SqlServer.dll
+E:\5th Semester\OOAD\Project\Kutabkhana\bin\EntityFramework.SqlServer.xml
