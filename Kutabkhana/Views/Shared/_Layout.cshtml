@@ -118,7 +118,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Users Configuration:</h6>
                         @Html.ActionLink("User Types", "Index", "UserType", null, new { @class = "collapse-item" })
-                        <a class="collapse-item" href="">User Registration</a>
+                        @Html.ActionLink("User Registration", "Index", "Users", null, new { @class = "collapse-item" })
                         <a class="collapse-item" href="">All Users</a>
                     </div>
                 </div>
@@ -146,35 +146,43 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Addons
+                Employee's
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
+                    <span>Registration</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                        <h6 class="collapse-header">Registeration:</h6>
+                        @Html.ActionLink("New Employee", "Create", "Employee", null, new { @class = "collapse-item" })
                         <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
+                        <h6 class="collapse-header">List:</h6>
+                        @Html.ActionLink("All Employee's", "Index", "Employee", null, new { @class = "collapse-item" })
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBC" aria-expanded="true" aria-controls="collapseBC">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Basic Configuration</span>
                 </a>
+                <div id="collapseBC" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Designation:</h6>
+                        @Html.ActionLink("New Designation", "Create", "Designation", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("All Designation", "Index", "Designation", null, new { @class = "collapse-item" })
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">Department:</h6>
+                        @Html.ActionLink("New Department", "Create", "Department", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("All Department", "Index", "Department", null, new { @class = "collapse-item" })
+                    </div>
+                </div>
             </li>
 
             <!-- Nav Item - Tables -->
