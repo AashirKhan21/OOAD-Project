@@ -141,6 +141,7 @@
     <Content Include="Content\Admin Template\css\fontstyle.css" />
     <Content Include="Content\Admin Template\css\sb-admin-2.css" />
     <Content Include="Content\Admin Template\css\sb-admin-2.min.css" />
+    <Content Include="Content\Admin Template\img\KutabKhana_Logo.png" />
     <Content Include="Content\Admin Template\img\undraw_posting_photo.svg" />
     <Content Include="Content\Admin Template\js\demo\chart-area-demo.js" />
     <Content Include="Content\Admin Template\js\demo\chart-bar-demo.js" />

@@ -25,6 +25,8 @@ namespace Kutabkhana.Controllers
         {
             try
             {
+                if (tbl_Users.Username != null && tbl_Users.Password != null)
+                {
                     var finduser = db.tbl_Users.Where(u => u.Username == tbl_Users.Username && u.Password == tbl_Users.Password && u.IsActive == true).FirstOrDefault();
                     if (finduser != null)
                     {
@@ -55,6 +57,11 @@ namespace Kutabkhana.Controllers
                         {
                             return RedirectToAction("About", "Home");
                         }
+                        else
+                        {
+                            return RedirectToAction("Login", "Index");
+                        }
+
                     }
                     else
                     {
@@ -66,6 +73,7 @@ namespace Kutabkhana.Controllers
                         ViewBag.Message = "Username and Password is Incorrect!!";
                         return RedirectToAction("Login", "Index");
                     }
+                }
             }
             catch (Exception ex)
             {
@@ -95,7 +103,12 @@ namespace Kutabkhana.Controllers
 
         public ActionResult Logout()
         {
-            return View("Login");
+            Session["UserID"] = string.Empty;
+            Session["UserTypeID"] = string.Empty;
+            Session["Username"] = string.Empty;
+            Session["Password"] = string.Empty;
+            Session["EmployeeID"] = string.Empty;
+            return RedirectToAction("Login");
         }
     }
 }
