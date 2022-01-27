@@ -17,6 +17,10 @@ namespace Kutabkhana.Controllers
         // GET: Designation
         public ActionResult Index()
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             var tbl_Designation = db.tbl_Designation.Include(t => t.tbl_Users);
             return View(tbl_Designation.ToList());
         }
@@ -24,6 +28,12 @@ namespace Kutabkhana.Controllers
         // GET: Designation/Details/5
         public ActionResult Details(int? id)
         {
+
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -39,7 +49,11 @@ namespace Kutabkhana.Controllers
         // GET: Designation/Create
         public ActionResult Create()
         {
-            ViewBag.UserID = new SelectList(db.tbl_Users, "UserID", "Username");
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            //ViewBag.UserID = new SelectList(db.tbl_Users, "UserID", "Username");
             return View();
         }
 
@@ -48,8 +62,15 @@ namespace Kutabkhana.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "DesignationID,Name,UserID,Scale")] tbl_Designation tbl_Designation)
+        public ActionResult Create(tbl_Designation tbl_Designation)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            int userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
+            tbl_Designation.UserID = userid;
+
             if (ModelState.IsValid)
             {
                 db.tbl_Designation.Add(tbl_Designation);
@@ -64,6 +85,11 @@ namespace Kutabkhana.Controllers
         // GET: Designation/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -82,8 +108,14 @@ namespace Kutabkhana.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "DesignationID,Name,UserID,Scale")] tbl_Designation tbl_Designation)
+        public ActionResult Edit(tbl_Designation tbl_Designation)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            int userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
+            tbl_Designation.UserID = userid;
             if (ModelState.IsValid)
             {
                 db.Entry(tbl_Designation).State = EntityState.Modified;
@@ -97,6 +129,10 @@ namespace Kutabkhana.Controllers
         // GET: Designation/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -114,6 +150,10 @@ namespace Kutabkhana.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }   
             tbl_Designation tbl_Designation = db.tbl_Designation.Find(id);
             db.tbl_Designation.Remove(tbl_Designation);
             db.SaveChanges();

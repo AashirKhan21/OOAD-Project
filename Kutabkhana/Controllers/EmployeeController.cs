@@ -17,6 +17,10 @@ namespace Kutabkhana.Controllers
         // GET: Employee
         public ActionResult Index()
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             var tbl_Employee = db.tbl_Employee.Include(t => t.tbl_Department).Include(t => t.tbl_Designation);
             return View(tbl_Employee.ToList());
         }
@@ -24,6 +28,10 @@ namespace Kutabkhana.Controllers
         // GET: Employee/Details/5
         public ActionResult Details(int? id)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -39,6 +47,10 @@ namespace Kutabkhana.Controllers
         // GET: Employee/Create
         public ActionResult Create()
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             ViewBag.DepartmentID = new SelectList(db.tbl_Department, "DepartmentID", "Name");
             ViewBag.DesignationID = new SelectList(db.tbl_Designation, "DesignationID", "Name");
             return View();
@@ -49,8 +61,15 @@ namespace Kutabkhana.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EmployeeID,UserID,FullName,FatherName,Email,ContactNo,Address,DesignationID,DepartmentID,IsActive,Description")] tbl_Employee tbl_Employee)
+        public ActionResult Create(tbl_Employee tbl_Employee)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            int userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
+            tbl_Employee.UserID = userid;
+
             if (ModelState.IsValid)
             {
                 db.tbl_Employee.Add(tbl_Employee);
@@ -66,6 +85,10 @@ namespace Kutabkhana.Controllers
         // GET: Employee/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -85,8 +108,14 @@ namespace Kutabkhana.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EmployeeID,UserID,FullName,FatherName,Email,ContactNo,Address,DesignationID,DepartmentID,IsActive,Description")] tbl_Employee tbl_Employee)
+        public ActionResult Edit(tbl_Employee tbl_Employee)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            int userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
+            tbl_Employee.UserID = userid;
             if (ModelState.IsValid)
             {
                 db.Entry(tbl_Employee).State = EntityState.Modified;
@@ -101,6 +130,10 @@ namespace Kutabkhana.Controllers
         // GET: Employee/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -118,6 +151,10 @@ namespace Kutabkhana.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             tbl_Employee tbl_Employee = db.tbl_Employee.Find(id);
             db.tbl_Employee.Remove(tbl_Employee);
             db.SaveChanges();

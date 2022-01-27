@@ -17,6 +17,11 @@ namespace Kutabkhana.Controllers
         // GET: Department
         public ActionResult Index()
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
+
             var tbl_Department = db.tbl_Department.Include(t => t.tbl_Users);
             return View(tbl_Department.ToList());
         }
@@ -24,6 +29,10 @@ namespace Kutabkhana.Controllers
         // GET: Department/Details/5
         public ActionResult Details(int? id)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -39,7 +48,12 @@ namespace Kutabkhana.Controllers
         // GET: Department/Create
         public ActionResult Create()
         {
-            ViewBag.UserID = new SelectList(db.tbl_Users, "UserID", "Username");
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
+           
+           // ViewBag.UserID = new SelectList(db.tbl_Users, "UserID", "Username");
             return View();
         }
 
@@ -48,8 +62,14 @@ namespace Kutabkhana.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "DepartmentID,Name,UserID")] tbl_Department tbl_Department)
+        public ActionResult Create(tbl_Department tbl_Department)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            int userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
+            tbl_Department.UserID = userid;
             if (ModelState.IsValid)
             {
                 db.tbl_Department.Add(tbl_Department);
@@ -64,6 +84,10 @@ namespace Kutabkhana.Controllers
         // GET: Department/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -82,8 +106,14 @@ namespace Kutabkhana.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "DepartmentID,Name,UserID")] tbl_Department tbl_Department)
+        public ActionResult Edit(tbl_Department tbl_Department)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            int userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
+            tbl_Department.UserID = userid;
             if (ModelState.IsValid)
             {
                 db.Entry(tbl_Department).State = EntityState.Modified;
@@ -97,6 +127,10 @@ namespace Kutabkhana.Controllers
         // GET: Department/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -114,6 +148,10 @@ namespace Kutabkhana.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             tbl_Department tbl_Department = db.tbl_Department.Find(id);
             db.tbl_Department.Remove(tbl_Department);
             db.SaveChanges();

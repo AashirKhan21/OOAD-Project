@@ -124,6 +124,24 @@
                 </div>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBC" aria-expanded="true" aria-controls="collapseBC">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Basic Configuration</span>
+                </a>
+                <div id="collapseBC" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Designation:</h6>
+                        @Html.ActionLink("New Designation", "Create", "Designation", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("All Designation", "Index", "Designation", null, new { @class = "collapse-item" })
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">Department:</h6>
+                        @Html.ActionLink("New Department", "Create", "Department", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("All Department", "Index", "Department", null, new { @class = "collapse-item" })
+                    </div>
+                </div>
+            </li>
+
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
@@ -168,21 +186,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBC" aria-expanded="true" aria-controls="collapseBC">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Basic Configuration</span>
-                </a>
-                <div id="collapseBC" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Designation:</h6>
-                        @Html.ActionLink("New Designation", "Create", "Designation", null, new { @class = "collapse-item" })
-                        @Html.ActionLink("All Designation", "Index", "Designation", null, new { @class = "collapse-item" })
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Department:</h6>
-                        @Html.ActionLink("New Department", "Create", "Department", null, new { @class = "collapse-item" })
-                        @Html.ActionLink("All Department", "Index", "Department", null, new { @class = "collapse-item" })
-                    </div>
-                </div>
+               
             </li>
 
             <!-- Nav Item - Tables -->
@@ -437,7 +441,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="~/Home/Login">Logout</a>
+                    @Html.ActionLink("Logout", "Logout", "Home", new { @class = "btn btn-primary" });
                 </div>
             </div>
         </div>

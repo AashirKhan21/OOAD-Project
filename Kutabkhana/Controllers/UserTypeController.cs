@@ -17,12 +17,20 @@ namespace Kutabkhana.Controllers
         // GET: UserType
         public ActionResult Index()
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             return View(db.tbl_UserType.ToList());
         }
 
         // GET: UserType/Details/5
         public ActionResult Details(int? id)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -38,6 +46,10 @@ namespace Kutabkhana.Controllers
         // GET: UserType/Create
         public ActionResult Create()
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             return View();
         }
 
@@ -48,6 +60,10 @@ namespace Kutabkhana.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(tbl_UserType tbl_UserType)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (ModelState.IsValid)
             {
                 db.tbl_UserType.Add(tbl_UserType);
@@ -61,6 +77,10 @@ namespace Kutabkhana.Controllers
         // GET: UserType/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -80,6 +100,10 @@ namespace Kutabkhana.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "UserTypeID,UserType")] tbl_UserType tbl_UserType)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(tbl_UserType).State = EntityState.Modified;
@@ -92,6 +116,10 @@ namespace Kutabkhana.Controllers
         // GET: UserType/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -109,12 +137,16 @@ namespace Kutabkhana.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             tbl_UserType tbl_UserType = db.tbl_UserType.Find(id);
             db.tbl_UserType.Remove(tbl_UserType);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+            
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -123,5 +155,5 @@ namespace Kutabkhana.Controllers
             }
             base.Dispose(disposing);
         }
-    }
+    } 
 }

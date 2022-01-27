@@ -17,6 +17,10 @@ namespace Kutabkhana.Controllers
         // GET: Users
         public ActionResult Index()
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             var tbl_Users = db.tbl_Users.Include(t => t.tbl_Employee).Include(t => t.tbl_UserType);
             return View(tbl_Users.ToList());
         }
@@ -24,6 +28,10 @@ namespace Kutabkhana.Controllers
         // GET: Users/Details/5
         public ActionResult Details(int? id)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -39,6 +47,10 @@ namespace Kutabkhana.Controllers
         // GET: Users/Create
         public ActionResult Create()
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             ViewBag.EmployeeID = new SelectList(db.tbl_Employee, "EmployeeID", "FullName");
             ViewBag.UserTypeID = new SelectList(db.tbl_UserType, "UserTypeID", "UserType");
             return View();
@@ -49,8 +61,14 @@ namespace Kutabkhana.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserID,UserTypeID,Username,Password,EmployeeID,IsActive")] tbl_Users tbl_Users)
+        public ActionResult Create(tbl_Users tbl_Users)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            int userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
+            tbl_Users.UserID = userid;
             if (ModelState.IsValid)
             {
                 db.tbl_Users.Add(tbl_Users);
@@ -66,6 +84,10 @@ namespace Kutabkhana.Controllers
         // GET: Users/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -85,8 +107,14 @@ namespace Kutabkhana.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserID,UserTypeID,Username,Password,EmployeeID,IsActive")] tbl_Users tbl_Users)
+        public ActionResult Edit(tbl_Users tbl_Users)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
+            int userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
+            tbl_Users.UserID = userid;
             if (ModelState.IsValid)
             {
                 db.Entry(tbl_Users).State = EntityState.Modified;
@@ -101,6 +129,10 @@ namespace Kutabkhana.Controllers
         // GET: Users/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -118,6 +150,10 @@ namespace Kutabkhana.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             tbl_Users tbl_Users = db.tbl_Users.Find(id);
             db.tbl_Users.Remove(tbl_Users);
             db.SaveChanges();
