@@ -1,57 +1,65 @@
 ﻿@model IEnumerable<Kutabkhana_DBLayer.tbl_Users>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "User's - Dashboard";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Username)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tbl_Employee.FullName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tbl_UserType.UserType)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Username)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsActive)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tbl_Employee.FullName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tbl_UserType.UserType)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.UserID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.UserID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.UserID })
-        </td>
-    </tr>
-}
-
-</table>
+@Html.ActionLink("New User", "Create", null, new { @class = "btn btn-success" })
+<!-- DataTales Example -->
+<div class="card shadow mb-4 mt-2">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">User's List</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            Username
+                        </th>
+                        <th>
+                            Password
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th>
+                            Employee
+                        </th>
+                        <th>
+                            User Type
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Username)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Password)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IsActive)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tbl_Employee.FullName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tbl_UserType.UserType)
+                            </td>
+                            <td class="btn-group">
+                                @Html.ActionLink("Edit", "Edit", new { id = item.UserID }, new { @class="btn btn-primary"})
+                                @Html.ActionLink("Details", "Details", new { id = item.UserID }, new { @class = "btn btn-info" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
