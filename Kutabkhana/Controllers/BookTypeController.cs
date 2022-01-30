@@ -20,6 +20,7 @@ namespace Kutabkhana.Controllers
             if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
             {
                 return RedirectToAction("Login", "Home");
+
             }
             return View(db.tbl_BookType.ToList());
         }
