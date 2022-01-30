@@ -28,6 +28,11 @@ namespace Kutabkhana.Controllers
         // GET: BookType/Details/5
         public ActionResult Details(int? id)
         {
+            if(string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -43,6 +48,11 @@ namespace Kutabkhana.Controllers
         // GET: BookType/Create
         public ActionResult Create()
         {
+            if(string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+
+            }
             return View();
         }
 
@@ -51,8 +61,12 @@ namespace Kutabkhana.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BookTypeID,Name")] tbl_BookType tbl_BookType)
+        public ActionResult Create(tbl_BookType tbl_BookType)
         {
+            if(string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (ModelState.IsValid)
             {
                 db.tbl_BookType.Add(tbl_BookType);
@@ -66,6 +80,10 @@ namespace Kutabkhana.Controllers
         // GET: BookType/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -83,8 +101,12 @@ namespace Kutabkhana.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BookTypeID,Name")] tbl_BookType tbl_BookType)
+        public ActionResult Edit(tbl_BookType tbl_BookType)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(tbl_BookType).State = EntityState.Modified;
@@ -97,6 +119,10 @@ namespace Kutabkhana.Controllers
         // GET: BookType/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -114,6 +140,10 @@ namespace Kutabkhana.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
             tbl_BookType tbl_BookType = db.tbl_BookType.Find(id);
             db.tbl_BookType.Remove(tbl_BookType);
             db.SaveChanges();
