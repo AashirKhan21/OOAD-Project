@@ -141,6 +141,23 @@
                         @Html.ActionLink("All Department", "Index", "Department", null, new { @class = "collapse-item" })
                     </div>
                 </div>
+
+
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePC" aria-expanded="true" aria-controls="collapsePC">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Purchasing</span>
+                </a>
+                <div id="collapsePC" class="collapse" aria-labelledby="headingPC" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Designation:</h6>
+                        @Html.ActionLink("All Supplier", "Index", "Supplier", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("All Purchase's", "Index", "Purchase", null, new { @class = "collapse-item" })
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">Department:</h6>
+                        @Html.ActionLink("New Department", "Create", "Department", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("All Department", "Index", "Department", null, new { @class = "collapse-item" })
+                    </div>
+                </div>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
@@ -442,7 +459,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    @Html.ActionLink("Logout", "Logout", "Home", new { @class = "btn btn-primary" });
+                    @Html.ActionLink("Logout","Logout", "Home", null, new { @class = "btn btn-primary" });
                 </div>
             </div>
         </div>
