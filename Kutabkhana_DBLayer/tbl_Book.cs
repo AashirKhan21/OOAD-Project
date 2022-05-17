@@ -11,8 +11,7 @@ namespace Kutabkhana_DBLayer
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class tbl_Book
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,30 +21,20 @@ namespace Kutabkhana_DBLayer
             this.tbl_BookReturn = new HashSet<tbl_BookReturn>();
             this.tbl_IssueBook = new HashSet<tbl_IssueBook>();
             this.tbl_PurchaseDetails = new HashSet<tbl_PurchaseDetails>();
+            this.tbl_PurTemDetails = new HashSet<tbl_PurTemDetails>();
         }
     
         public int BookID { get; set; }
         public int UserID { get; set; }
-
-        [Required(ErrorMessage = "Please Select Department")]
         public int DepartmentID { get; set; }
-        [Required(ErrorMessage = "Please Select Book Type")]
         public int BookTypeID { get; set; }
-        [Required(ErrorMessage = "Please Enter Book Title")]
         public string BookTitle { get; set; }
-        [Required(ErrorMessage = "Please Enter Short Description")]
         public string ShortDescription { get; set; }
-        [Required(ErrorMessage = "Please Enter Author")]
         public string Author { get; set; }
-        [Required(ErrorMessage = "Please Enter Book Name")]
         public string BookName { get; set; }
-        [Required(ErrorMessage = "Please Enter Book Edition")]
         public double Edition { get; set; }
-        [Required(ErrorMessage = "Please Enter Total Copies")]
         public int TotalCopies { get; set; }
         public System.DateTime RegDate { get; set; }
-        [Required(ErrorMessage = "Please Enter Price")]
-        [DataType(DataType.Currency)]
         public double Price { get; set; }
         public string Description { get; set; }
     
@@ -60,5 +49,7 @@ namespace Kutabkhana_DBLayer
         public virtual ICollection<tbl_IssueBook> tbl_IssueBook { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_PurchaseDetails> tbl_PurchaseDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_PurTemDetails> tbl_PurTemDetails { get; set; }
     }
 }

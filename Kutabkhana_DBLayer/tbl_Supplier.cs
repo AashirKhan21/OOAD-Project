@@ -11,8 +11,7 @@ namespace Kutabkhana_DBLayer
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class tbl_Supplier
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,12 +21,9 @@ namespace Kutabkhana_DBLayer
         }
     
         public int SupplierID { get; set; }
-        [Required(ErrorMessage = "Please Enter Supplier Name")]
         public string SupplierName { get; set; }
         public int UserID { get; set; }
-        [Required(ErrorMessage = "Please Enter Contact Number")]
         public string ContactNo { get; set; }
-        [Required(ErrorMessage = "Please Enter Email Address")]
         public string Email { get; set; }
         public string Description { get; set; }
     

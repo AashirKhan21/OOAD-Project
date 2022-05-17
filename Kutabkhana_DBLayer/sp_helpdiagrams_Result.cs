@@ -10,17 +10,13 @@
 namespace Kutabkhana_DBLayer
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class tbl_PurchaseDetails
+    public partial class sp_helpdiagrams_Result
     {
-        public int PurchaseDetailID { get; set; }
-        public int BookID { get; set; }
-        public int PurchaseID { get; set; }
-        public int Qty { get; set; }
-        public double UnitPrice { get; set; }
-    
-        public virtual tbl_Book tbl_Book { get; set; }
-        public virtual tbl_Purchase tbl_Purchase { get; set; }
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

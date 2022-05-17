@@ -11,8 +11,7 @@ namespace Kutabkhana_DBLayer
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class tbl_Department
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,7 +22,6 @@ namespace Kutabkhana_DBLayer
         }
     
         public int DepartmentID { get; set; }
-        [Required(ErrorMessage = "Please Enter Department Name")]
         public string Name { get; set; }
         public int UserID { get; set; }
     

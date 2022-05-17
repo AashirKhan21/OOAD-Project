@@ -12,21 +12,13 @@ namespace Kutabkhana_DBLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class tbl_IssueBook
+    public partial class tbl_PurTemDetails
     {
-        public int IssueBookID { get; set; }
-        public int UserID { get; set; }
+        public int PurTemItem { get; set; }
         public int BookID { get; set; }
-        public int EmployeeID { get; set; }
-        public int IssueCopies { get; set; }
-        public System.DateTime IssueDate { get; set; }
-        public System.DateTime ReturnDate { get; set; }
-        public bool Status { get; set; }
-        public string Description { get; set; }
-        public bool ReserveNoOfCopies { get; set; }
+        public int Qty { get; set; }
+        public double UnitPrice { get; set; }
     
         public virtual tbl_Book tbl_Book { get; set; }
-        public virtual tbl_Employee tbl_Employee { get; set; }
-        public virtual tbl_Users tbl_Users { get; set; }
     }
 }

@@ -1,33 +1,47 @@
 ﻿@model IEnumerable<Kutabkhana_DBLayer.tbl_BookType>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "All Book Type - Dashboard";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th></th>
-    </tr>
+@Html.ActionLink("Add Book Type", "Create", null, new { @class = "btn btn-success" })
+<!-- DataTales Example -->
+<div class="card shadow mb-4 mt-2">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Book Type's List</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Actions
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BookTypeID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BookTypeID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BookTypeID })
-        </td>
-    </tr>
-}
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td class="btn-group">
+                                @Html.ActionLink("Edit", "Edit", new { id = item.BookTypeID }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("Details", "Details", new { id = item.BookTypeID }, new { @class = "btn btn-info" })
+                            </td>
+                        </tr>
+                    }
 
-</table>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+</div>
+

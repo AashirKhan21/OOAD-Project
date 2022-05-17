@@ -11,8 +11,7 @@ namespace Kutabkhana_DBLayer
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class tbl_Users
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,18 +24,14 @@ namespace Kutabkhana_DBLayer
             this.tbl_IssueBook = new HashSet<tbl_IssueBook>();
             this.tbl_Purchase = new HashSet<tbl_Purchase>();
             this.tbl_Supplier = new HashSet<tbl_Supplier>();
+            this.tbl_BookType = new HashSet<tbl_BookType>();
         }
     
         public int UserID { get; set; }
-        [Required(ErrorMessage = "Please Select User Type")]
         public int UserTypeID { get; set; }
-        [Required(ErrorMessage = "Please Enter Username")]
         public string Username { get; set; }
-        [Required(ErrorMessage = "Please Enter Password")]
         public string Password { get; set; }
-        [Required(ErrorMessage = "Please Select Employee")]
         public int EmployeeID { get; set; }
-        [Display(Name = "Status")]
         public bool IsActive { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -55,5 +50,7 @@ namespace Kutabkhana_DBLayer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_Supplier> tbl_Supplier { get; set; }
         public virtual tbl_UserType tbl_UserType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_BookType> tbl_BookType { get; set; }
     }
 }

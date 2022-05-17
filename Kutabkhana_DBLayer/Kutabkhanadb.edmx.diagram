@@ -4,21 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fed4f1b967e74821a602f460968b7ecf" Name="Diagram1" ZoomLevel="47">
+      <Diagram DiagramId="fed4f1b967e74821a602f460968b7ecf" Name="Diagram1" ZoomLevel="66">
         <EntityTypeShape EntityType="KutabkhanaDBModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="KutabkhanaDBModel.tbl_Book" Width="1.5" PointX="7.5" PointY="14.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="KutabkhanaDBModel.tbl_BookFine" Width="1.5" PointX="9.75" PointY="16.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="KutabkhanaDBModel.tbl_BookReturn" Width="1.5" PointX="12.75" PointY="18.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="KutabkhanaDBModel.tbl_BookType" Width="1.5" PointX="5.25" PointY="15.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="KutabkhanaDBModel.tbl_Department" Width="1.5" PointX="5.25" PointY="18" IsExpanded="true" />
-        <EntityTypeShape EntityType="KutabkhanaDBModel.tbl_Designation" Width="1.5" PointX="5.25" PointY="20.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="KutabkhanaDBModel.tbl_Employee" Width="1.5" PointX="7.5" PointY="21.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="KutabkhanaDBModel.tbl_IssueBook" Width="1.5" PointX="12.75" PointY="14.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="KutabkhanaDBModel.tbl_Purchase" Width="1.5" PointX="10.5" PointY="20.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="KutabkhanaDBModel.tbl_PurchaseDetails" Width="1.5" PointX="15.75" PointY="18" IsExpanded="true" />
-        <EntityTypeShape EntityType="KutabkhanaDBModel.tbl_Supplier" Width="1.5" PointX="5.25" PointY="25" IsExpanded="true" />
-        <EntityTypeShape EntityType="KutabkhanaDBModel.tbl_Users" Width="1.5" PointX="3" PointY="14.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="KutabkhanaDBModel.tbl_UserType" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KutabkhanaDBModel.tbl_Book" Width="1.5" PointX="8.5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KutabkhanaDBModel.tbl_BookFine" Width="1.5" PointX="10.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KutabkhanaDBModel.tbl_BookReturn" Width="1.5" PointX="13.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KutabkhanaDBModel.tbl_BookType" Width="1.5" PointX="6.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KutabkhanaDBModel.tbl_Department" Width="1.5" PointX="6.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KutabkhanaDBModel.tbl_Designation" Width="1.5" PointX="6.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KutabkhanaDBModel.tbl_Employee" Width="1.5" PointX="8.5" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KutabkhanaDBModel.tbl_IssueBook" Width="1.5" PointX="13.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KutabkhanaDBModel.tbl_Purchase" Width="1.5" PointX="11.5" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KutabkhanaDBModel.tbl_PurchaseDetails" Width="1.5" PointX="16.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KutabkhanaDBModel.tbl_Supplier" Width="1.5" PointX="1.875" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KutabkhanaDBModel.tbl_Users" Width="1.5" PointX="4" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KutabkhanaDBModel.tbl_UserType" Width="1.5" PointX="1.75" PointY="9" IsExpanded="true" />
         <AssociationConnector Association="KutabkhanaDBModel.FK_tbl_Book_tbl_BookType" ManuallyRouted="false" />
         <AssociationConnector Association="KutabkhanaDBModel.FK_tbl_Book_tbl_Department" ManuallyRouted="false" />
         <AssociationConnector Association="KutabkhanaDBModel.FK_tbl_Book_tbl_Users" ManuallyRouted="false" />
@@ -41,6 +41,9 @@
         <AssociationConnector Association="KutabkhanaDBModel.FK_tbl_PurchaseDetails_tbl_Purchase" ManuallyRouted="false" />
         <AssociationConnector Association="KutabkhanaDBModel.FK_tbl_Supplier_tbl_Users" ManuallyRouted="false" />
         <AssociationConnector Association="KutabkhanaDBModel.FK_tbl_Users_tbl_UserType" ManuallyRouted="false" />
+        <AssociationConnector Association="KutabkhanaDBModel.FK__tbl_BookT__UserI__2739D489" />
+        <EntityTypeShape EntityType="KutabkhanaDBModel.tbl_PurTemDetails" Width="1.5" PointX="11.375" PointY="5.25" IsExpanded="true" />
+        <AssociationConnector Association="KutabkhanaDBModel.FK_tbl_PurTemDetails_tbl_Book" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

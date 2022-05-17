@@ -11,8 +11,7 @@ namespace Kutabkhana_DBLayer
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class tbl_Purchase
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,14 +21,9 @@ namespace Kutabkhana_DBLayer
         }
     
         public int PurchaseID { get; set; }
-        [Required(ErrorMessage = "Please Select Purchase Date")]
-        [DataType(DataType.Date)]
         public System.DateTime PurchaseDate { get; set; }
         public int UserID { get; set; }
-        [Required(ErrorMessage = "Please Enter Purchase Unit Price")]
-        [DataType(DataType.Currency)]
         public double PurchaseAmount { get; set; }
-        [Required(ErrorMessage = "Please Select Supplier")]
         public int SupplierID { get; set; }
     
         public virtual tbl_Supplier tbl_Supplier { get; set; }

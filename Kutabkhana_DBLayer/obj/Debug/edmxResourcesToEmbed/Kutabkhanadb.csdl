@@ -34,6 +34,7 @@
     <NavigationProperty Name="tbl_BookReturn" Relationship="Self.FK_tbl_BookReturn_tbl_Book1" FromRole="tbl_Book" ToRole="tbl_BookReturn" />
     <NavigationProperty Name="tbl_IssueBook" Relationship="Self.FK_tbl_IssueBook_tbl_Book" FromRole="tbl_Book" ToRole="tbl_IssueBook" />
     <NavigationProperty Name="tbl_PurchaseDetails" Relationship="Self.FK_tbl_PurchaseDetails_tbl_Book" FromRole="tbl_Book" ToRole="tbl_PurchaseDetails" />
+    <NavigationProperty Name="tbl_PurTemDetails" Relationship="KutabkhanaDBModel.FK_tbl_PurTemDetails_tbl_Book" FromRole="tbl_Book" ToRole="tbl_PurTemDetails" />
   </EntityType>
   <EntityType Name="tbl_BookFine">
     <Key>
@@ -72,6 +73,8 @@
     <Property Name="BookTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="tbl_Book" Relationship="Self.FK_tbl_Book_tbl_BookType" FromRole="tbl_BookType" ToRole="tbl_Book" />
+    <Property Name="UserId" Type="Int32" />
+    <NavigationProperty Name="tbl_Users" Relationship="KutabkhanaDBModel.FK__tbl_BookT__UserI__2739D489" FromRole="tbl_BookType" ToRole="tbl_Users" />
   </EntityType>
   <EntityType Name="tbl_Department">
     <Key>
@@ -192,6 +195,7 @@
     <NavigationProperty Name="tbl_Purchase" Relationship="Self.FK_tbl_Purchase_tbl_Users" FromRole="tbl_Users" ToRole="tbl_Purchase" />
     <NavigationProperty Name="tbl_Supplier" Relationship="Self.FK_tbl_Supplier_tbl_Users" FromRole="tbl_Users" ToRole="tbl_Supplier" />
     <NavigationProperty Name="tbl_UserType" Relationship="Self.FK_tbl_Users_tbl_UserType" FromRole="tbl_Users" ToRole="tbl_UserType" />
+    <NavigationProperty Name="tbl_BookType" Relationship="KutabkhanaDBModel.FK__tbl_BookT__UserI__2739D489" FromRole="tbl_Users" ToRole="tbl_BookType" />
   </EntityType>
   <EntityType Name="tbl_UserType">
     <Key>
@@ -568,5 +572,89 @@
       <End Role="tbl_UserType" EntitySet="tbl_UserType" />
       <End Role="tbl_Users" EntitySet="tbl_Users" />
     </AssociationSet>
+    <AssociationSet Name="FK__tbl_BookT__UserI__2739D489" Association="KutabkhanaDBModel.FK__tbl_BookT__UserI__2739D489">
+      <End Role="tbl_Users" EntitySet="tbl_Users" />
+      <End Role="tbl_BookType" EntitySet="tbl_BookType" />
+    </AssociationSet>
+    <EntitySet Name="tbl_PurTemDetails" EntityType="KutabkhanaDBModel.tbl_PurTemDetails" />
+    <AssociationSet Name="FK_tbl_PurTemDetails_tbl_Book" Association="KutabkhanaDBModel.FK_tbl_PurTemDetails_tbl_Book">
+      <End Role="tbl_Book" EntitySet="tbl_Book" />
+      <End Role="tbl_PurTemDetails" EntitySet="tbl_PurTemDetails" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(KutabkhanaDBModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(KutabkhanaDBModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
   </EntityContainer>
+  <Association Name="FK__tbl_BookT__UserI__2739D489">
+    <End Type="KutabkhanaDBModel.tbl_Users" Role="tbl_Users" Multiplicity="0..1" />
+    <End Type="KutabkhanaDBModel.tbl_BookType" Role="tbl_BookType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="tbl_BookType">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tbl_PurTemDetails">
+    <Key>
+      <PropertyRef Name="PurTemItem" />
+    </Key>
+    <Property Name="PurTemItem" Type="Int32" Nullable="false" />
+    <Property Name="BookID" Type="Int32" Nullable="false" />
+    <Property Name="Qty" Type="Int32" Nullable="false" />
+    <Property Name="UnitPrice" Type="Double" Nullable="false" />
+    <NavigationProperty Name="tbl_Book" Relationship="KutabkhanaDBModel.FK_tbl_PurTemDetails_tbl_Book" FromRole="tbl_PurTemDetails" ToRole="tbl_Book" />
+  </EntityType>
+  <Association Name="FK_tbl_PurTemDetails_tbl_Book">
+    <End Type="KutabkhanaDBModel.tbl_Book" Role="tbl_Book" Multiplicity="1" />
+    <End Type="KutabkhanaDBModel.tbl_PurTemDetails" Role="tbl_PurTemDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Book">
+        <PropertyRef Name="BookID" />
+      </Principal>
+      <Dependent Role="tbl_PurTemDetails">
+        <PropertyRef Name="BookID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
 </Schema>

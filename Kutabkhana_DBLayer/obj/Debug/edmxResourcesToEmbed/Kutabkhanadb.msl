@@ -61,6 +61,7 @@
     <EntitySetMapping Name="tbl_BookType">
       <EntityTypeMapping TypeName="KutabkhanaDBModel.tbl_BookType">
         <MappingFragment StoreEntitySet="tbl_BookType">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="BookTypeID" ColumnName="BookTypeID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
@@ -172,5 +173,39 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tbl_PurTemDetails">
+      <EntityTypeMapping TypeName="KutabkhanaDBModel.tbl_PurTemDetails">
+        <MappingFragment StoreEntitySet="tbl_PurTemDetails">
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="BookID" ColumnName="BookID" />
+          <ScalarProperty Name="PurTemItem" ColumnName="PurTemItem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="KutabkhanaDBModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="KutabkhanaDBModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="KutabkhanaDBModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="KutabkhanaDBModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KutabkhanaDBModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="KutabkhanaDBModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KutabkhanaDBModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="KutabkhanaDBModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="KutabkhanaDBModel.Store.sp_upgraddiagrams" />
   </EntityContainerMapping>
 </Mapping>

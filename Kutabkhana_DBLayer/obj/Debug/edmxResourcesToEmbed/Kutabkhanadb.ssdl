@@ -59,6 +59,7 @@
     </Key>
     <Property Name="BookTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="UserId" Type="int" />
   </EntityType>
   <EntityType Name="tbl_Department">
     <Key>
@@ -128,6 +129,15 @@
     <Property Name="Qty" Type="int" Nullable="false" />
     <Property Name="UnitPrice" Type="float" Nullable="false" />
   </EntityType>
+  <EntityType Name="tbl_PurTemDetails">
+    <Key>
+      <PropertyRef Name="PurTemItem" />
+    </Key>
+    <Property Name="PurTemItem" Type="int" Nullable="false" />
+    <Property Name="BookID" Type="int" Nullable="false" />
+    <Property Name="Qty" Type="int" Nullable="false" />
+    <Property Name="UnitPrice" Type="float" Nullable="false" />
+  </EntityType>
   <EntityType Name="tbl_Supplier">
     <Key>
       <PropertyRef Name="SupplierID" />
@@ -157,6 +167,18 @@
     <Property Name="UserTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserType" Type="nvarchar" MaxLength="200" Nullable="false" />
   </EntityType>
+  <Association Name="FK__tbl_BookT__UserI__2739D489">
+    <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="0..1" />
+    <End Role="tbl_BookType" Type="Self.tbl_BookType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="tbl_BookType">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tbl_Book_tbl_BookType">
     <End Role="tbl_BookType" Type="Self.tbl_BookType" Multiplicity="1" />
     <End Role="tbl_Book" Type="Self.tbl_Book" Multiplicity="*" />
@@ -385,6 +407,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_tbl_PurTemDetails_tbl_Book">
+    <End Role="tbl_Book" Type="Self.tbl_Book" Multiplicity="1" />
+    <End Role="tbl_PurTemDetails" Type="Self.tbl_PurTemDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Book">
+        <PropertyRef Name="BookID" />
+      </Principal>
+      <Dependent Role="tbl_PurTemDetails">
+        <PropertyRef Name="BookID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tbl_Supplier_tbl_Users">
     <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="1" />
     <End Role="tbl_Supplier" Type="Self.tbl_Supplier" Multiplicity="*" />
@@ -421,6 +455,37 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="KutabkhanaDBModelStoreContainer">
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Book" EntityType="Self.tbl_Book" Schema="dbo" store:Type="Tables" />
@@ -433,9 +498,14 @@
     <EntitySet Name="tbl_IssueBook" EntityType="Self.tbl_IssueBook" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Purchase" EntityType="Self.tbl_Purchase" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_PurchaseDetails" EntityType="Self.tbl_PurchaseDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_PurTemDetails" EntityType="Self.tbl_PurTemDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Supplier" EntityType="Self.tbl_Supplier" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_Users" EntityType="Self.tbl_Users" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbl_UserType" EntityType="Self.tbl_UserType" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__tbl_BookT__UserI__2739D489" Association="Self.FK__tbl_BookT__UserI__2739D489">
+      <End Role="tbl_Users" EntitySet="tbl_Users" />
+      <End Role="tbl_BookType" EntitySet="tbl_BookType" />
+    </AssociationSet>
     <AssociationSet Name="FK_tbl_Book_tbl_BookType" Association="Self.FK_tbl_Book_tbl_BookType">
       <End Role="tbl_BookType" EntitySet="tbl_BookType" />
       <End Role="tbl_Book" EntitySet="tbl_Book" />
@@ -511,6 +581,10 @@
     <AssociationSet Name="FK_tbl_PurchaseDetails_tbl_Purchase" Association="Self.FK_tbl_PurchaseDetails_tbl_Purchase">
       <End Role="tbl_Purchase" EntitySet="tbl_Purchase" />
       <End Role="tbl_PurchaseDetails" EntitySet="tbl_PurchaseDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tbl_PurTemDetails_tbl_Book" Association="Self.FK_tbl_PurTemDetails_tbl_Book">
+      <End Role="tbl_Book" EntitySet="tbl_Book" />
+      <End Role="tbl_PurTemDetails" EntitySet="tbl_PurTemDetails" />
     </AssociationSet>
     <AssociationSet Name="FK_tbl_Supplier_tbl_Users" Association="Self.FK_tbl_Supplier_tbl_Users">
       <End Role="tbl_Users" EntitySet="tbl_Users" />

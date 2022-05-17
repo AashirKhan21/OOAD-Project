@@ -11,28 +11,16 @@ namespace Kutabkhana_DBLayer
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class tbl_BookFine
     {
         public int BookFineID { get; set; }
-        [Required(ErrorMessage = "Please Select Employee!")]
         public int EmployeeID { get; set; }
-        [Required(ErrorMessage = "Please Select Book!")]
         public int BookID { get; set; }
         public int UserID { get; set; }
-
-        [Required(ErrorMessage = "Please Select Date!")]
-        [DataType(DataType.Date)]
         public System.DateTime FineDate { get; set; }
-
-        [Required(ErrorMessage = "Please Enter Penalty")]
         public double FineAmount { get; set; }
-
-        [Required(ErrorMessage = "Please Enter Receive Amount/Penalty")]
         public Nullable<double> ReceiveAmount { get; set; }
-
-        [Required(ErrorMessage = "Please Enter No of Days")]
         public int NoOfDays { get; set; }
     
         public virtual tbl_Book tbl_Book { get; set; }

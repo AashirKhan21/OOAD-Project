@@ -1,0 +1,111 @@
+﻿@model Kutabkhana_DBLayer.tbl_Book
+
+@{
+    ViewBag.Title = "Book Details";
+}
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Book Title
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookTitle)
+        </dd>
+
+        <dt>
+            Short Description
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShortDescription)
+        </dd>
+
+        <dt>
+            Author
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Author)
+        </dd>
+
+        <dt>
+            Book Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookName)
+        </dd>
+
+        <dt>
+            Edition
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Edition)
+        </dd>
+
+        <dt>
+            Total Copies
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalCopies)
+        </dd>
+
+        <dt>
+            Reg. Date
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegDate)
+        </dd>
+
+        <dt>
+            Price
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            Description
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            Book Type
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_BookType.Name)
+        </dd>
+
+        <dt>
+            Department
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Department.Name)
+        </dd>
+
+        <dt>
+            User
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Users.Username)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BookID, @class = "btn btn-primary" })
+    @Html.ActionLink("Back to List", "Index", null, new { @class= "btn btn-default"})
+</p>

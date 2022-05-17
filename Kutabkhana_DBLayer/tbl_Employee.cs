@@ -11,8 +11,7 @@ namespace Kutabkhana_DBLayer
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class tbl_Employee
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -26,27 +25,13 @@ namespace Kutabkhana_DBLayer
     
         public int EmployeeID { get; set; }
         public int UserID { get; set; }
-        [Required(ErrorMessage = "Please Enter Full Name")]
         public string FullName { get; set; }
-
-        [Required(ErrorMessage = "Please Enter Father Name")]
         public string FatherName { get; set; }
-
-        [Required(ErrorMessage = "Please Enter Email")]
         public string Email { get; set; }
-
-        [Required(ErrorMessage = "Please Enter Contact Number")]
         public string ContactNo { get; set; }
-
-        [Required(ErrorMessage = "Please Enter Address")]
         public string Address { get; set; }
-
-        [Required(ErrorMessage = "Please Select Designation")]
         public int DesignationID { get; set; }
-
-        [Required(ErrorMessage = "Please Select Department")]
         public int DepartmentID { get; set; }
-        [Display(Name = "Status")]
         public bool IsActive { get; set; }
         public string Description { get; set; }
     

@@ -1,136 +1,60 @@
-﻿using System;
+﻿using Kutabkhana_DBLayer;
+using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Kutabkhana_DBLayer;
 
 namespace Kutabkhana.Controllers
 {
     public class PurchaseController : Controller
     {
+        // GET: Purchase
         private KutabkhanaDBEntities db = new KutabkhanaDBEntities();
 
-        // GET: Purchase
-        public ActionResult Index()
+        public ActionResult NewPurchase()
         {
-            var tbl_Purchase = db.tbl_Purchase.Include(t => t.tbl_Supplier).Include(t => t.tbl_Users);
-            return View(tbl_Purchase.ToList());
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
+            {
+                return RedirectToAction("Login", "Home");
+            }
+
+            var tempur = db.tbl_PurTemDetails.ToList();
+
+            return View(tempur);
         }
 
-        // GET: Purchase/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult AddItem(int BID, int Qty, float Price)
         {
-            if (id == null)
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserID"])))
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Login", "Home");
             }
-            tbl_Purchase tbl_Purchase = db.tbl_Purchase.Find(id);
-            if (tbl_Purchase == null)
+            int userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
+            var find = db.tbl_PurTemDetails.Where(i => i.BookID == BID && i.Qty == Qty && i.UnitPrice == Price).FirstOrDefault();
+            if (find == null)
             {
-                return HttpNotFound();
+                if (BID > 0 && Qty > 0 && Price > 0)
+                {
+                    var newitem = new tbl_PurTemDetails()
+                    { 
+                        BookID = BID,
+                        Qty = Qty,
+                        UnitPrice = Price
+                    };
+
+                    db.tbl_PurTemDetails.Add(newitem);
+                    db.SaveChanges();
+                    ViewBag.Message = "Book Add Successfully.";
+
+                }
             }
-            return View(tbl_Purchase);
-        }
-
-        // GET: Purchase/Create
-        public ActionResult Create()
-        {
-            ViewBag.SupplierID = new SelectList(db.tbl_Supplier, "SupplierID", "SupplierName");
-            ViewBag.UserID = new SelectList(db.tbl_Users, "UserID", "Username");
-            return View();
-        }
-
-        // POST: Purchase/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PurchaseID,PurchaseDate,UserID,PurchaseAmount,SupplierID")] tbl_Purchase tbl_Purchase)
-        {
-            if (ModelState.IsValid)
+            else
             {
-                db.tbl_Purchase.Add(tbl_Purchase);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.Message = "Already Exists! Please Check";
             }
 
-            ViewBag.SupplierID = new SelectList(db.tbl_Supplier, "SupplierID", "SupplierName", tbl_Purchase.SupplierID);
-            ViewBag.UserID = new SelectList(db.tbl_Users, "UserID", "Username", tbl_Purchase.UserID);
-            return View(tbl_Purchase);
-        }
-
-        // GET: Purchase/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tbl_Purchase tbl_Purchase = db.tbl_Purchase.Find(id);
-            if (tbl_Purchase == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.SupplierID = new SelectList(db.tbl_Supplier, "SupplierID", "SupplierName", tbl_Purchase.SupplierID);
-            ViewBag.UserID = new SelectList(db.tbl_Users, "UserID", "Username", tbl_Purchase.UserID);
-            return View(tbl_Purchase);
-        }
-
-        // POST: Purchase/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PurchaseID,PurchaseDate,UserID,PurchaseAmount,SupplierID")] tbl_Purchase tbl_Purchase)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(tbl_Purchase).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.SupplierID = new SelectList(db.tbl_Supplier, "SupplierID", "SupplierName", tbl_Purchase.SupplierID);
-            ViewBag.UserID = new SelectList(db.tbl_Users, "UserID", "Username", tbl_Purchase.UserID);
-            return View(tbl_Purchase);
-        }
-
-        // GET: Purchase/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            tbl_Purchase tbl_Purchase = db.tbl_Purchase.Find(id);
-            if (tbl_Purchase == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tbl_Purchase);
-        }
-
-        // POST: Purchase/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            tbl_Purchase tbl_Purchase = db.tbl_Purchase.Find(id);
-            db.tbl_Purchase.Remove(tbl_Purchase);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+            return RedirectToAction("NewPurchase");
         }
     }
 }

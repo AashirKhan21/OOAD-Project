@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Kutabkhana_DBLayer.tbl_Book>
+
+@{
+    ViewBag.Title = "All Book's List - Dashboard";
+}
+
+@Html.ActionLink("Add New Book", "Create", null, new { @class = "btn btn-success" })
+<!-- DataTales Example -->
+<div class="card shadow mb-4 mt-2">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Book Type's List</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            Book Title
+                        </th>
+                        <th>
+                            Short Desc.
+                        </th>
+                        <th>
+                            Book Name
+                        </th>
+                        <th>
+                            Edition
+                        </th>
+                        <th>
+                            Book Type
+                        </th>
+                        <th>
+                            Department
+                        </th>
+                        <th>
+                            User
+                        </th>
+                        <th>
+                            Actions
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BookTitle)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ShortDescription)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BookName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Edition)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tbl_BookType.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tbl_Department.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tbl_Users.Username)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.BookID }, new { @class = "btn btn-success"})
+                                @Html.ActionLink("Details", "Details", new { id = item.BookID }, new { @class = "btn btn-info" })
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+            </table>
+           </div>
+        </div>
+</div>

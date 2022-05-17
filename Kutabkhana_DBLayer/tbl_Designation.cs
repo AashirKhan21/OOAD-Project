@@ -11,8 +11,7 @@ namespace Kutabkhana_DBLayer
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class tbl_Designation
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,10 +21,8 @@ namespace Kutabkhana_DBLayer
         }
     
         public int DesignationID { get; set; }
-        [Required(ErrorMessage = "Please Enter Designation")]
         public string Name { get; set; }
         public int UserID { get; set; }
-        [Required(ErrorMessage = "Please Enter Designation Scale")]
         public string Scale { get; set; }
     
         public virtual tbl_Users tbl_Users { get; set; }
